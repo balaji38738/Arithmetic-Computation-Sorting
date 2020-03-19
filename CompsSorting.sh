@@ -16,11 +16,11 @@ function solveExpressions() {
 
 #Function to print results of expressions
 function printResults() {
-	printf "Expressions' results\n"
+	printf "\nExpressions' results\n"
 	printf "$number1 + $number2 * $number3 = $result1\n"
 	printf "$number1 * $number2 + $number3 = $result2\n"
 	printf "$number3 + $number1 / $number2 = $result3\n"
-	printf "$number1 %% $number2 + $number3 = $result4\n"
+	printf "$number1 %% $number2 + $number3 = $result4\n\n"
 }
 
 solveExpressions
@@ -28,6 +28,7 @@ printResults
 
 declare -A exprResults	#Dictionary to store results of expressions
 
+#Function to store expressions' results in dictionary
 function storeResultsInDict() {
 	exprResults[expr1]=$result1
 	exprResults[expr2]=$result2
@@ -40,3 +41,15 @@ storeResultsInDict
 echo "Keys: ${!exprResults[@]}"
 echo "values: ${exprResults[@]}"
 
+#Function to store dictionary values in array
+function storeDictInArray() {
+	index=0
+	for result in "${exprResults[@]}"
+	do
+		resultsArray[((index++))]=$result
+	done
+}
+
+storeDictInArray
+
+echo -e "\nArray: ${resultsArray[@]}"
