@@ -25,3 +25,18 @@ function printResults() {
 
 solveExpressions
 printResults
+
+declare -A exprResults	#Dictionary to store results of expressions
+
+function storeResultsInDict() {
+	exprResults[expr1]=$result1
+	exprResults[expr2]=$result2
+	exprResults[expr3]=$result3
+	exprResults[expr4]=$result4
+}
+
+storeResultsInDict
+
+echo "Keys: ${!exprResults[@]}"
+echo "values: ${exprResults[@]}"
+
