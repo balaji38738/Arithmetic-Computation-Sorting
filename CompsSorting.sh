@@ -54,8 +54,8 @@ storeDictInArray
 
 echo -e "\nArray: ${resultsArray[@]}"
 
-#Bubble sorting the array
-function bubbleSort() {
+#Bubble sorting the array in descending order
+function bubbleSortDescend() {
 	TRUE=1
 	FALSE=0
 	for (( pass=1; pass<=3; pass++ ))
@@ -79,6 +79,6 @@ function bubbleSort() {
 	done
 }
 
-bubbleSort
+bubbleSortDescend
 
 echo -e "\nResults in descending order: ${resultsArray[@]}"
