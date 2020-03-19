@@ -1,7 +1,21 @@
 #!/bin/bash -x
 
 #Problem Statement:- Sort the results of arithmetic expressions in ascending and descending order
-#Author:-Balaji Ijjapwar
+#Author:- Balaji Ijjapwar
 #Date:- 20 March 2020
 
 read -p "Enter three numbers: " number1 number2 number3
+
+#Function to solve the expressions
+function solveExpressions() {
+	result1=`echo "scale=4; $number1 + $number2 * $number3" | bc`
+}
+
+#Function to print results of expressions
+function printResults() {
+	printf "Expressions' results\n"
+	printf "$number1 + $number2 * $number3 = $result1\n"
+}
+
+solveExpressions
+printResults
