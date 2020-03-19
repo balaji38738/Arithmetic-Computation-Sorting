@@ -53,3 +53,32 @@ function storeDictInArray() {
 storeDictInArray
 
 echo -e "\nArray: ${resultsArray[@]}"
+
+#Bubble sorting the array
+function bubbleSort() {
+	TRUE=1
+	FALSE=0
+	for (( pass=1; pass<=3; pass++ ))
+	do
+		swapped=$FALSE
+		for (( index=0; index<=$((3-pass)); index++ ))
+		do
+			gt=$( echo "${resultsArray[index]} < ${resultsArray[index+1]}" | bc -q )	#returns 1 if true, 0 otherwise
+			if [ $gt -eq 1 ]
+			then
+				temp=${resultsArray[index]}
+				resultsArray[index]=${resultsArray[index+1]}
+				resultsArray[index+1]=$temp
+				swapped=$TRUE
+			fi
+		done
+		if [ $swapped -eq $FALSE ]
+		then
+			break
+		fi
+	done
+}
+
+bubbleSort
+
+echo -e "\nResults in descending order: ${resultsArray[@]}"
