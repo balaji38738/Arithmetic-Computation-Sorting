@@ -82,3 +82,31 @@ function bubbleSortDescend() {
 bubbleSortDescend
 
 echo -e "\nResults in descending order: ${resultsArray[@]}"
+
+#Bubble sorting the array in ascending order
+function bubbleSortAscend() {
+   for (( pass=1; pass<=3; pass++ ))
+   do
+      swapped=$FALSE
+      for (( index=0; index<=$((3-pass)); index++ ))
+      do
+         gt=$( echo "${resultsArray[index]} > ${resultsArray[index+1]}" | bc -q )
+         if [ $gt -eq 1 ]
+         then
+            temp=${resultsArray[index]}
+            resultsArray[index]=${resultsArray[index+1]}
+            resultsArray[index+1]=$temp
+            swapped=$TRUE
+         fi
+      done
+      if [ $swapped -eq $FALSE ]
+      then
+         break
+      fi
+   done
+}
+
+bubbleSortAscend
+
+echo -e "\nResults in ascending order: ${resultsArray[@]}"
+
